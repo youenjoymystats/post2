@@ -18,8 +18,3 @@ map <- gvisGeoChart(cities,locationvar = "latlon",  sizevar = "count",
 print(map,"chart",file="map.txt")
 plot(map)
 
-
-Geo=gvisGeoChart(Exports, locationvar="Country", 
-                 colorvar="Profit",
-                 options=list(projection="kavrayskiy-vii"))
-plot(Geo)
