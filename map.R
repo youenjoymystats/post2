@@ -18,3 +18,19 @@ map <- gvisGeoChart(cities,locationvar = "latlon",  sizevar = "count",
 print(map,"chart",file="map.txt")
 plot(map)
 
+burlington <- tapply(data$city=="Burlington", data$year, sum)
+nyc <- tapply(data$city=="New York", data$year, sum)
+
+df.burlington <- data.frame(city = "Burlington", shows = burlington, 
+                            year = rownames(burlington))
+df.nyc <- data.frame(city = "NYC", shows = nyc, 
+                            year = rownames(nyc))
+df <- rbind(df.burlington, df.nyc)
+mn <- min(as.numeric(as.character(df$year)))
+mx <- max(as.numeric(as.character(df$year)))
+          
+ggplot(df, aes(year, shows, colour = city)) + 
+        geom_point() + 
+        geom_line(aes(group=city)) +
+        scale_x_discrete(breaks=pretty(c(mn,max), n = 10))
+ggsave(file="ggplot.png")
