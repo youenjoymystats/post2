@@ -51,4 +51,4 @@ ggplot(df, aes(Year, Shows, colour = City)) +
         geom_point() + 
         geom_line(aes(group=City)) +
         scale_x_discrete(breaks=pretty(c(mn,mx), n = 10))
-ggsave(file="burlington_nyc.png", width = 3, height = 3)
+ggsave(file="burlington_nyc.png", scale = 0.75)
